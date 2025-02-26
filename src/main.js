@@ -81,6 +81,7 @@ function checkForMatch() {
     firstCard.classList.add("matched");
     secondCard.classList.add("matched");
 
+    updatePoints();
     disableCards();
   } else {
     lockBoard = true;
@@ -90,7 +91,6 @@ function checkForMatch() {
       secondCard.classList.remove("flipped");
 
       updateTries();
-      updatePoints();
 
       resetBoard();
     }, 1000);
@@ -109,9 +109,12 @@ function resetBoard() {
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
+
+// 실행한 횟수
+
 let score = 0;
 let tries = 0;
-// 실행한 횟수
+
 function updateTries() {
   tries++;
   document.getElementById("tryCount").textContent = tries;
@@ -119,12 +122,11 @@ function updateTries() {
 
 // 획득점수
 function updatePoints() {
-  if (firstCardValue === secondCardValue) {
-    score++;
-  }
+  score++;
   document.getElementById("pointCount").textContent = score;
 }
 
+// 리셋
 document.getElementById("resetBtn").addEventListener("click", resetGame);
 
 function resetGame() {
