@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Flip</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="game-header">
+        <div class="control-panel">
+          <button id="startBtn">start Game</button>
+          <div class="game-status">
+            <span>Tries:<span id="tryCount">0</span></span>
+            <span>Points:<span id="pointCount">0</span></span>
+          </div>
+          <button id="resetBtn">reset Game</button>
+        </div>
+      </header>
+      <main class="game-board">
+        <div class="card-grid">
+          <!-- 카드 동적 실행부분-->
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

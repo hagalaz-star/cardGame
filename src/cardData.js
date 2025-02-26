@@ -1,0 +1,18 @@
+export const cardData = [
+  { id: 1, value: 1, isFlipped: false, isMatched: false },
+  { id: 2, value: 1, isFlipped: false, isMatched: false },
+  { id: 3, value: 2, isFlipped: false, isMatched: false },
+  { id: 4, value: 2, isFlipped: false, isMatched: false },
+  { id: 5, value: 3, isFlipped: false, isMatched: false },
+  { id: 6, value: 3, isFlipped: false, isMatched: false },
+  { id: 7, value: 4, isFlipped: false, isMatched: false },
+  { id: 8, value: 4, isFlipped: false, isMatched: false },
+  { id: 9, value: 5, isFlipped: false, isMatched: false },
+  { id: 10, value: 5, isFlipped: false, isMatched: false },
+  { id: 11, value: 6, isFlipped: false, isMatched: false },
+  { id: 12, value: 6, isFlipped: false, isMatched: false },
+  { id: 13, value: 7, isFlipped: false, isMatched: false },
+  { id: 14, value: 7, isFlipped: false, isMatched: false },
+  { id: 15, value: 8, isFlipped: false, isMatched: false },
+  { id: 16, value: 8, isFlipped: false, isMatched: false },
+];
