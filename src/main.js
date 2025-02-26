@@ -1,24 +1,18 @@
 import "./style.css";
 import { cardData } from "./cardData";
 
-// 페이지 로드 시 초기 설정
-document.addEventListener("DOMContentLoaded", () => {
-  const cardGrid = document.querySelector(".card-grid");
-  if (cardGrid) {
-  }
-});
-
 // 스타트 버튼 이벤트 리스너
 document.getElementById("startBtn").addEventListener("click", () => {
-  // 카드 그리드 표시
-  document.querySelector(".card-grid").style.display = "grid";
-
   resetGameState();
   createCards();
 
   document.getElementById("startBtn").style.display = "none";
   document.getElementById("resetBtn").style.display = "inline-block";
 });
+
+let hasFlippedCard = false; // 카드가 뒤집혔는지
+let firstCard, secondCard;
+let lockBoard = false; // 두 카드 확인 중에 추가 클릭 방지
 
 // 게임 상태 초기화 함수
 function resetGameState() {
@@ -77,9 +71,6 @@ function createCards() {
     card.addEventListener("click", flipCard);
   });
 }
-let hasFlippedCard = false; // 카드가 뒤집혔는지
-let firstCard, secondCard;
-let lockBoard = false; // 두 카드 확인 중에 추가 클릭 방지
 
 // 지금은 카드가 뒤집혔는지 안되었는지 확인 하는 함수이고 변수에 저장
 function flipCard() {
@@ -262,7 +253,4 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 
   // 카드 다시 생성
   createCards();
-
-  // 리셋 버튼 숨기기
-  document.getElementById("resetBtn").style.display = "none";
 });
