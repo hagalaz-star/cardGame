@@ -150,31 +150,6 @@ function updatePoints() {
   document.getElementById("pointCount").textContent = score;
 }
 
-// 리셋
-document.getElementById("resetBtn").addEventListener("click", resetGame);
-
-function resetGame() {
-  [hasFlippedCard, lockBoard] = [false, false];
-  [firstCard, secondCard] = [null, null];
-
-  tries = 0;
-  score = 0;
-
-  document.getElementById("tryCount").textContent = tries;
-  document.getElementById("pointCount").textContent = score;
-
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach((card) => {
-    card.classList.remove("flipped", "matched");
-
-    card.removeEventListener("click", flipCard);
-    card.addEventListener("click", flipCard);
-  });
-
-  const shuffledCards = shuffleArray([...cardData]);
-}
-
 // 타이머 관련 변수
 let timerInterval;
 let seconds = 0;
