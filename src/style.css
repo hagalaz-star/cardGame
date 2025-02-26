@@ -45,8 +45,16 @@ button:hover {
   background-color: #45a049;
 }
 
+#foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
 #resetBtn {
   background-color: #f44336;
+  padding: 15px 30px;
 }
 
 #resetBtn:hover {

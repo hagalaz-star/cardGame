@@ -253,4 +253,6 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 
   // 카드 다시 생성
   createCards();
+  // 타이머 다시 시작
+  startTimer();
 });
