@@ -2,13 +2,13 @@ import "./style.css";
 import { cardData } from "./cardData";
 
 // 스타트 버튼 이벤트 리스너
-document.getElementById("startBtn").addEventListener("click", () => {
+function startGame() {
   resetGameState();
   createCards();
 
-  document.getElementById("startBtn").style.display = "none";
+  // UI 상태 변경
   document.getElementById("resetBtn").style.display = "inline-block";
-});
+}
 
 let hasFlippedCard = false; // 카드가 뒤집혔는지
 let firstCard, secondCard;
@@ -75,6 +75,8 @@ function createCards() {
 // 지금은 카드가 뒤집혔는지 안되었는지 확인 하는 함수이고 변수에 저장
 function flipCard() {
   const clickCard = this;
+
+  if (!isTimerRunning) return;
 
   if (lockBoard) return;
   if (clickCard === firstCard) return;
@@ -154,19 +156,31 @@ function updatePoints() {
 let timerInterval;
 let seconds = 0;
 let isTimerRunning = false;
+let isGameStarted = false;
 
 // 스타트 버튼을 타이머 시작 버튼으로 활용
 document.getElementById("startBtn").addEventListener("click", toggleTimer);
 
 // 타이머 시작 / 정지 토글 함수
 function toggleTimer() {
+  if (!isGameStarted) {
+    startGame();
+    isGameStarted = true;
+  }
+
   if (!isTimerRunning) {
     startTimer();
     document.getElementById("startBtn").textContent = "Pause";
+
+    // 카드 그리드에 활성화 상태 표시
+    document.querySelector(".card-grid").classList.remove("paused");
   } else {
     //타이머 정지
     stopTimer();
     document.getElementById("startBtn").textContent = "Resume";
+
+    // 카드 그리드에 일시정지 상태 표시
+    document.querySelector(".card-grid").classList.add("paused");
   }
   isTimerRunning = !isTimerRunning;
 }
@@ -199,7 +213,6 @@ function resetTimer() {
   seconds = 0;
   isTimerRunning = false;
   document.getElementById("timer").textContent = "00:00";
-  document.getElementById("startBtn").textContent = "Start Game";
 }
 
 // 게임 완료 확인 함수
@@ -210,24 +223,24 @@ function checkGameCompletion() {
   if (allMatched) {
     // 타이머 정지
     stopTimer();
-    // 리셋 버튼 표시
-    document.getElementById("resetBtn").style.display = "block";
     // 선택적: 완료 메시지 표시
     alert(`축하합니다! 게임을 ${seconds}초 만에 완료했습니다!`);
   }
 }
 
 // 리셋 버튼 이벤트 리스터
-
 document.getElementById("resetBtn").addEventListener("click", () => {
   //타이머 리셋
   resetTimer();
+  // 게임 변수 초기화
+  isGameStarted = false;
 
   // 게임 상태 초기화
   resetGameState();
 
   // 카드 다시 생성
   createCards();
+
   // 타이머 다시 시작
   startTimer();
 });
